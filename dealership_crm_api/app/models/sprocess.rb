@@ -1,0 +1,2 @@
+class Sprocess < ApplicationRecord
+end
