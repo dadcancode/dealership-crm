@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  due_date: 1
+  completed: false
+  notes: MyString
+
+two:
+  type: 
+  due_date: 1
+  completed: false
+  notes: MyString

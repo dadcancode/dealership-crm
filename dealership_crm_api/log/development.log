@@ -1,0 +1,1006 @@
+  [1m[35m (7054.0ms)[0m  [1m[35mCREATE DATABASE "dealership_crm_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (4128.1ms)[0m  [1m[35mCREATE DATABASE "dealership_crm_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (159.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (73.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200708221201)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "username" character varying, "user_type" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (19.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708221201"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (14.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-08 22:16:11.249253"], ["updated_at", "2020-07-08 22:16:11.249253"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProspects (20200708222131)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (73.8ms)[0m  [1m[35mCREATE TABLE "prospects" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "phone" character varying, "email" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (20.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708222131"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProspects (20200708223107)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (36.1ms)[0m  [1m[35mALTER TABLE "prospects" ADD "user_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708223107"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateVehicles (20200708225133)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (103.4ms)[0m  [1m[35mCREATE TABLE "vehicles" ("id" bigserial primary key, "type" character varying, "year" integer, "make" character varying, "model" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708225133"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSprocesses (20200708225726)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (106.7ms)[0m  [1m[35mCREATE TABLE "sprocesses" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708225726"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20200708230110)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (51.7ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "type" character varying, "due_date" integer, "completed" boolean, "notes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708230110"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddForeignKeyToTasks (20200708230304)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tasks" ADD "sprocess_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708230304"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8455348551385632645)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVehForeignKeyToProspect (20200708231533)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "prospects" ADD "vehicle_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708231533"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(8455348551385632645)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Gary"], ["last_name", "Rice"], ["username", "britteny"], ["user_type", "salesperson"], ["password", "ErQs7"], ["created_at", "2020-07-08 23:45:19.633232"], ["updated_at", "2020-07-08 23:45:19.633232"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Sang"], ["last_name", "Weber"], ["username", "roselia"], ["user_type", "salesperson"], ["password", "IoEf0O"], ["created_at", "2020-07-08 23:45:19.641719"], ["updated_at", "2020-07-08 23:45:19.641719"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Cuc"], ["last_name", "Hagenes"], ["username", "brady_west"], ["user_type", "salesperson"], ["password", "KxKdQl"], ["created_at", "2020-07-08 23:45:19.647451"], ["updated_at", "2020-07-08 23:45:19.647451"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Valentine"], ["last_name", "Feeney"], ["username", "jana_spinka"], ["user_type", "salesperson"], ["password", "Fz7A8"], ["created_at", "2020-07-08 23:45:19.653345"], ["updated_at", "2020-07-08 23:45:19.653345"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Darrel"], ["last_name", "Goodwin"], ["username", "joanna"], ["user_type", "salesperson"], ["password", "FsWpU"], ["created_at", "2020-07-08 23:45:19.659428"], ["updated_at", "2020-07-08 23:45:19.659428"]]
+  [1m[35m (14.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Graham"], ["last_name", "Block"], ["username", "loan"], ["user_type", "salesperson"], ["password", "WlZfU7"], ["created_at", "2020-07-08 23:45:19.679905"], ["updated_at", "2020-07-08 23:45:19.679905"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Danuta"], ["last_name", "Graham"], ["username", "mario.considine"], ["user_type", "salesperson"], ["password", "0MiU"], ["created_at", "2020-07-08 23:45:19.687791"], ["updated_at", "2020-07-08 23:45:19.687791"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Lucas"], ["last_name", "Hamill"], ["username", "ken_christiansen"], ["user_type", "salesperson"], ["password", "0XiVn"], ["created_at", "2020-07-08 23:45:19.696528"], ["updated_at", "2020-07-08 23:45:19.696528"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Damien"], ["last_name", "Mante"], ["username", "mae"], ["user_type", "salesperson"], ["password", "QhIx"], ["created_at", "2020-07-08 23:45:19.704406"], ["updated_at", "2020-07-08 23:45:19.704406"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "user_type", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dortha"], ["last_name", "Braun"], ["username", "antonia_homenick"], ["user_type", "salesperson"], ["password", "MmPx"], ["created_at", "2020-07-08 23:45:19.712817"], ["updated_at", "2020-07-08 23:45:19.712817"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (2.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "Challenger"], ["created_at", "2020-07-09 00:10:16.552456"], ["updated_at", "2020-07-09 00:10:16.552456"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Dodge"], ["model", "Challenger"], ["created_at", "2020-07-09 00:10:16.562293"], ["updated_at", "2020-07-09 00:10:16.562293"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Lincoln"], ["model", "328i"], ["created_at", "2020-07-09 00:10:16.568147"], ["updated_at", "2020-07-09 00:10:16.568147"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "BMW"], ["model", "Civic"], ["created_at", "2020-07-09 00:10:16.574542"], ["updated_at", "2020-07-09 00:10:16.574542"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Toyota"], ["model", "Civic"], ["created_at", "2020-07-09 00:10:16.580305"], ["updated_at", "2020-07-09 00:10:16.580305"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2012], ["make", "Ford"], ["model", "Prius"], ["created_at", "2020-07-09 00:10:16.586724"], ["updated_at", "2020-07-09 00:10:16.586724"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2014], ["make", "Honda"], ["model", "Navigator"], ["created_at", "2020-07-09 00:10:16.597085"], ["updated_at", "2020-07-09 00:10:16.597085"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Ford"], ["model", "Odyssey"], ["created_at", "2020-07-09 00:10:16.605280"], ["updated_at", "2020-07-09 00:10:16.605280"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Chevy"], ["model", "Cube"], ["created_at", "2020-07-09 00:10:16.613338"], ["updated_at", "2020-07-09 00:10:16.613338"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Lincoln"], ["model", "Mustang"], ["created_at", "2020-07-09 00:10:16.621968"], ["updated_at", "2020-07-09 00:10:16.621968"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2010], ["make", "Dodge"], ["model", "Cube"], ["created_at", "2020-07-09 00:10:16.630463"], ["updated_at", "2020-07-09 00:10:16.630463"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Lincoln"], ["model", "Durango"], ["created_at", "2020-07-09 00:10:16.638347"], ["updated_at", "2020-07-09 00:10:16.638347"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Toyota"], ["model", "Silverado"], ["created_at", "2020-07-09 00:10:16.653258"], ["updated_at", "2020-07-09 00:10:16.653258"]]
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Chevy"], ["model", "Odyssey"], ["created_at", "2020-07-09 00:10:16.663540"], ["updated_at", "2020-07-09 00:10:16.663540"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.7ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Nissan"], ["model", "Mustang"], ["created_at", "2020-07-09 00:10:16.672016"], ["updated_at", "2020-07-09 00:10:16.672016"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Audi"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:16.680180"], ["updated_at", "2020-07-09 00:10:16.680180"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2011], ["make", "BMW"], ["model", "CR-V"], ["created_at", "2020-07-09 00:10:16.688704"], ["updated_at", "2020-07-09 00:10:16.688704"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Nissan"], ["model", "F150"], ["created_at", "2020-07-09 00:10:16.696999"], ["updated_at", "2020-07-09 00:10:16.696999"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Buick"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:16.704902"], ["updated_at", "2020-07-09 00:10:16.704902"]]
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Toyota"], ["model", "X5"], ["created_at", "2020-07-09 00:10:16.713424"], ["updated_at", "2020-07-09 00:10:16.713424"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Lincoln"], ["model", "Mustang"], ["created_at", "2020-07-09 00:10:16.722041"], ["updated_at", "2020-07-09 00:10:16.722041"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Chevy"], ["model", "Charger"], ["created_at", "2020-07-09 00:10:16.730882"], ["updated_at", "2020-07-09 00:10:16.730882"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Nissan"], ["model", "A7"], ["created_at", "2020-07-09 00:10:16.738644"], ["updated_at", "2020-07-09 00:10:16.738644"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Buick"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:16.746521"], ["updated_at", "2020-07-09 00:10:16.746521"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Lincoln"], ["model", "Camero"], ["created_at", "2020-07-09 00:10:16.754991"], ["updated_at", "2020-07-09 00:10:16.754991"]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "X1"], ["created_at", "2020-07-09 00:10:16.763522"], ["updated_at", "2020-07-09 00:10:16.763522"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Chevy"], ["model", "Accord"], ["created_at", "2020-07-09 00:10:16.769528"], ["updated_at", "2020-07-09 00:10:16.769528"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Lincoln"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:16.775856"], ["updated_at", "2020-07-09 00:10:16.775856"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Toyota"], ["model", "Odyssey"], ["created_at", "2020-07-09 00:10:16.788315"], ["updated_at", "2020-07-09 00:10:16.788315"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Toyota"], ["model", "CR-V"], ["created_at", "2020-07-09 00:10:16.795106"], ["updated_at", "2020-07-09 00:10:16.795106"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2014], ["make", "Ford"], ["model", "Silverado"], ["created_at", "2020-07-09 00:10:16.800971"], ["updated_at", "2020-07-09 00:10:16.800971"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Nissan"], ["model", "A7"], ["created_at", "2020-07-09 00:10:16.806668"], ["updated_at", "2020-07-09 00:10:16.806668"]]
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2009], ["make", "Buick"], ["model", "Ram"], ["created_at", "2020-07-09 00:10:16.821817"], ["updated_at", "2020-07-09 00:10:16.821817"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2011], ["make", "Audi"], ["model", "MKZ"], ["created_at", "2020-07-09 00:10:16.830695"], ["updated_at", "2020-07-09 00:10:16.830695"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2014], ["make", "Lincoln"], ["model", "Fiesta"], ["created_at", "2020-07-09 00:10:16.838515"], ["updated_at", "2020-07-09 00:10:16.838515"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Buick"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:16.845763"], ["updated_at", "2020-07-09 00:10:16.845763"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "Mustang"], ["created_at", "2020-07-09 00:10:16.852195"], ["updated_at", "2020-07-09 00:10:16.852195"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Lincoln"], ["model", "328i"], ["created_at", "2020-07-09 00:10:16.863559"], ["updated_at", "2020-07-09 00:10:16.863559"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Buick"], ["model", "Accord"], ["created_at", "2020-07-09 00:10:16.869231"], ["updated_at", "2020-07-09 00:10:16.869231"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Honda"], ["model", "MKS"], ["created_at", "2020-07-09 00:10:16.875344"], ["updated_at", "2020-07-09 00:10:16.875344"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Dodge"], ["model", "Juke"], ["created_at", "2020-07-09 00:10:16.881551"], ["updated_at", "2020-07-09 00:10:16.881551"]]
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Dodge"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:16.896866"], ["updated_at", "2020-07-09 00:10:16.896866"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Ford"], ["model", "A5"], ["created_at", "2020-07-09 00:10:16.904995"], ["updated_at", "2020-07-09 00:10:16.904995"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Dodge"], ["model", "Odyssey"], ["created_at", "2020-07-09 00:10:16.913667"], ["updated_at", "2020-07-09 00:10:16.913667"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.7ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "Ram"], ["created_at", "2020-07-09 00:10:16.922730"], ["updated_at", "2020-07-09 00:10:16.922730"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2014], ["make", "Audi"], ["model", "Juke"], ["created_at", "2020-07-09 00:10:16.930454"], ["updated_at", "2020-07-09 00:10:16.930454"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Chevy"], ["model", "Pathfiner"], ["created_at", "2020-07-09 00:10:16.939128"], ["updated_at", "2020-07-09 00:10:16.939128"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Buick"], ["model", "Fiesta"], ["created_at", "2020-07-09 00:10:16.946755"], ["updated_at", "2020-07-09 00:10:16.946755"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "BMW"], ["model", "Silverado"], ["created_at", "2020-07-09 00:10:16.955625"], ["updated_at", "2020-07-09 00:10:16.955625"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Audi"], ["model", "Prius"], ["created_at", "2020-07-09 00:10:16.963828"], ["updated_at", "2020-07-09 00:10:16.963828"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.8ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Nissan"], ["model", "Corolla"], ["created_at", "2020-07-09 00:10:16.968977"], ["updated_at", "2020-07-09 00:10:16.968977"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2010], ["make", "Toyota"], ["model", "Accord"], ["created_at", "2020-07-09 00:10:16.975265"], ["updated_at", "2020-07-09 00:10:16.975265"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "A4"], ["created_at", "2020-07-09 00:10:16.981135"], ["updated_at", "2020-07-09 00:10:16.981135"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Lincoln"], ["model", "S5"], ["created_at", "2020-07-09 00:10:16.987217"], ["updated_at", "2020-07-09 00:10:16.987217"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Audi"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:16.996604"], ["updated_at", "2020-07-09 00:10:16.996604"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Dodge"], ["model", "Encore"], ["created_at", "2020-07-09 00:10:17.005634"], ["updated_at", "2020-07-09 00:10:17.005634"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Audi"], ["model", "Malibu"], ["created_at", "2020-07-09 00:10:17.013406"], ["updated_at", "2020-07-09 00:10:17.013406"]]
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2009], ["make", "Honda"], ["model", "Civic"], ["created_at", "2020-07-09 00:10:17.022032"], ["updated_at", "2020-07-09 00:10:17.022032"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.7ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Ford"], ["model", "Civic"], ["created_at", "2020-07-09 00:10:17.030184"], ["updated_at", "2020-07-09 00:10:17.030184"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Honda"], ["model", "Verano"], ["created_at", "2020-07-09 00:10:17.038589"], ["updated_at", "2020-07-09 00:10:17.038589"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Audi"], ["model", "A4"], ["created_at", "2020-07-09 00:10:17.046829"], ["updated_at", "2020-07-09 00:10:17.046829"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2011], ["make", "Toyota"], ["model", "Fiesta"], ["created_at", "2020-07-09 00:10:17.055322"], ["updated_at", "2020-07-09 00:10:17.055322"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Audi"], ["model", "Malibu"], ["created_at", "2020-07-09 00:10:17.063533"], ["updated_at", "2020-07-09 00:10:17.063533"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Buick"], ["model", "Altima"], ["created_at", "2020-07-09 00:10:17.071846"], ["updated_at", "2020-07-09 00:10:17.071846"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Toyota"], ["model", "A7"], ["created_at", "2020-07-09 00:10:17.080089"], ["updated_at", "2020-07-09 00:10:17.080089"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Chevy"], ["model", "Prius"], ["created_at", "2020-07-09 00:10:17.088272"], ["updated_at", "2020-07-09 00:10:17.088272"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2017], ["make", "Lincoln"], ["model", "Pathfiner"], ["created_at", "2020-07-09 00:10:17.096934"], ["updated_at", "2020-07-09 00:10:17.096934"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Honda"], ["model", "Mustang"], ["created_at", "2020-07-09 00:10:17.105132"], ["updated_at", "2020-07-09 00:10:17.105132"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.7ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Honda"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:17.114663"], ["updated_at", "2020-07-09 00:10:17.114663"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2010], ["make", "Toyota"], ["model", "Fiesta"], ["created_at", "2020-07-09 00:10:17.123295"], ["updated_at", "2020-07-09 00:10:17.123295"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Dodge"], ["model", "X5"], ["created_at", "2020-07-09 00:10:17.128748"], ["updated_at", "2020-07-09 00:10:17.128748"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2010], ["make", "Toyota"], ["model", "Juke"], ["created_at", "2020-07-09 00:10:17.135106"], ["updated_at", "2020-07-09 00:10:17.135106"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.7ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Ford"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:17.140709"], ["updated_at", "2020-07-09 00:10:17.140709"]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2012], ["make", "Lincoln"], ["model", "Prius"], ["created_at", "2020-07-09 00:10:17.155353"], ["updated_at", "2020-07-09 00:10:17.155353"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Audi"], ["model", "MKS"], ["created_at", "2020-07-09 00:10:17.163638"], ["updated_at", "2020-07-09 00:10:17.163638"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2010], ["make", "Dodge"], ["model", "MKS"], ["created_at", "2020-07-09 00:10:17.171820"], ["updated_at", "2020-07-09 00:10:17.171820"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Audi"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:17.177974"], ["updated_at", "2020-07-09 00:10:17.177974"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Chevy"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:17.185007"], ["updated_at", "2020-07-09 00:10:17.185007"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2007], ["make", "BMW"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:17.190695"], ["updated_at", "2020-07-09 00:10:17.190695"]]
+  [1m[35m (9.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2013], ["make", "Lincoln"], ["model", "Accord"], ["created_at", "2020-07-09 00:10:17.205444"], ["updated_at", "2020-07-09 00:10:17.205444"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Toyota"], ["model", "Malibu"], ["created_at", "2020-07-09 00:10:17.213497"], ["updated_at", "2020-07-09 00:10:17.213497"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Lincoln"], ["model", "A4"], ["created_at", "2020-07-09 00:10:17.221693"], ["updated_at", "2020-07-09 00:10:17.221693"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2015], ["make", "Nissan"], ["model", "Malibu"], ["created_at", "2020-07-09 00:10:17.228019"], ["updated_at", "2020-07-09 00:10:17.228019"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2011], ["make", "Ford"], ["model", "Challenger"], ["created_at", "2020-07-09 00:10:17.234715"], ["updated_at", "2020-07-09 00:10:17.234715"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "BMW"], ["model", "A4"], ["created_at", "2020-07-09 00:10:17.247786"], ["updated_at", "2020-07-09 00:10:17.247786"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Lincoln"], ["model", "X1"], ["created_at", "2020-07-09 00:10:17.256069"], ["updated_at", "2020-07-09 00:10:17.256069"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Nissan"], ["model", "MKS"], ["created_at", "2020-07-09 00:10:17.263630"], ["updated_at", "2020-07-09 00:10:17.263630"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2011], ["make", "BMW"], ["model", "Camero"], ["created_at", "2020-07-09 00:10:17.271954"], ["updated_at", "2020-07-09 00:10:17.271954"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Dodge"], ["model", "Focus"], ["created_at", "2020-07-09 00:10:17.280130"], ["updated_at", "2020-07-09 00:10:17.280130"]]
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "BMW"], ["model", "A5"], ["created_at", "2020-07-09 00:10:17.294455"], ["updated_at", "2020-07-09 00:10:17.294455"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Ford"], ["model", "MKZ"], ["created_at", "2020-07-09 00:10:17.305970"], ["updated_at", "2020-07-09 00:10:17.305970"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Lincoln"], ["model", "Ram"], ["created_at", "2020-07-09 00:10:17.313723"], ["updated_at", "2020-07-09 00:10:17.313723"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Dodge"], ["model", "Charger"], ["created_at", "2020-07-09 00:10:17.320431"], ["updated_at", "2020-07-09 00:10:17.320431"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2012], ["make", "Buick"], ["model", "M5"], ["created_at", "2020-07-09 00:10:17.331135"], ["updated_at", "2020-07-09 00:10:17.331135"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2019], ["make", "Audi"], ["model", "Accord"], ["created_at", "2020-07-09 00:10:17.337969"], ["updated_at", "2020-07-09 00:10:17.337969"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2016], ["make", "Lincoln"], ["model", "Regal"], ["created_at", "2020-07-09 00:10:17.344563"], ["updated_at", "2020-07-09 00:10:17.344563"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Dodge"], ["model", "Camry"], ["created_at", "2020-07-09 00:10:17.350553"], ["updated_at", "2020-07-09 00:10:17.350553"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Dodge"], ["model", "Prius"], ["created_at", "2020-07-09 00:10:17.356532"], ["updated_at", "2020-07-09 00:10:17.356532"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2018], ["make", "Toyota"], ["model", "Rogue"], ["created_at", "2020-07-09 00:10:17.362662"], ["updated_at", "2020-07-09 00:10:17.362662"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Create (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", 2020], ["make", "Ford"], ["model", "CR-V"], ["created_at", "2020-07-09 00:10:17.368540"], ["updated_at", "2020-07-09 00:10:17.368540"]]
+  [1m[35m (14.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVehicle Load (2.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.6ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (1.7ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  [1m[36mProspect Create (2.3ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Earnest"], ["last_name", "Mueller"], ["phone", "226-926-0704"], ["email", "mauro_stiedemann@waelchi.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.811176"], ["updated_at", "2020-07-09 00:35:17.811176"], ["user_id", 2], ["vehicle_id", 85]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Ciera"], ["last_name", "Nitzsche"], ["phone", "(201) 224-7422"], ["email", "deborah@larson.biz"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.825636"], ["updated_at", "2020-07-09 00:35:17.825636"], ["user_id", 10], ["vehicle_id", 54]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.6ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Frederica"], ["last_name", "Purdy"], ["phone", "1-664-338-0389"], ["email", "tanya.walsh@herzog.io"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.845520"], ["updated_at", "2020-07-09 00:35:17.845520"], ["user_id", 3], ["vehicle_id", 35]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 72], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Lyndsey"], ["last_name", "Grady"], ["phone", "542-544-1471"], ["email", "irwin_mosciski@kovacek-stoltenberg.biz"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.865594"], ["updated_at", "2020-07-09 00:35:17.865594"], ["user_id", 3], ["vehicle_id", 72]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.7ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Loma"], ["last_name", "Gulgowski"], ["phone", "940-468-4549"], ["email", "christopher@mcclure.io"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.880785"], ["updated_at", "2020-07-09 00:35:17.880785"], ["user_id", 3], ["vehicle_id", 19]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 71], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Marti"], ["last_name", "Beahan"], ["phone", "203-311-0834"], ["email", "elliott.wyman@stracke.name"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.894249"], ["updated_at", "2020-07-09 00:35:17.894249"], ["user_id", 8], ["vehicle_id", 71]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.6ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Saundra"], ["last_name", "Feest"], ["phone", "592.184.0802"], ["email", "candy@schaefer.com"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.905947"], ["updated_at", "2020-07-09 00:35:17.905947"], ["user_id", 7], ["vehicle_id", 26]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.4ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Sidney"], ["last_name", "Wintheiser"], ["phone", "1-439-508-2916"], ["email", "edwardo@mueller.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.920273"], ["updated_at", "2020-07-09 00:35:17.920273"], ["user_id", 2], ["vehicle_id", 27]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mProspect Create (23.4ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Mervin"], ["last_name", "Marquardt"], ["phone", "(765) 716-3981"], ["email", "randell@ernser.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.931415"], ["updated_at", "2020-07-09 00:35:17.931415"], ["user_id", 10], ["vehicle_id", 43]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Blythe"], ["last_name", "Hettinger"], ["phone", "733.215.0523"], ["email", "roxana@tromp.info"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.964849"], ["updated_at", "2020-07-09 00:35:17.964849"], ["user_id", 3], ["vehicle_id", 92]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.6ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Thurman"], ["last_name", "Weissnat"], ["phone", "(534) 550-9071"], ["email", "rolanda.lind@blick.com"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.975020"], ["updated_at", "2020-07-09 00:35:17.975020"], ["user_id", 2], ["vehicle_id", 57]]
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Yasmin"], ["last_name", "Hoppe"], ["phone", "1-859-997-0230"], ["email", "alleen@berge.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:17.996081"], ["updated_at", "2020-07-09 00:35:17.996081"], ["user_id", 8], ["vehicle_id", 89]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.7ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 74], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.6ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Barrett"], ["last_name", "Stracke"], ["phone", "802.671.0184"], ["email", "alfredo@yost.net"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.011402"], ["updated_at", "2020-07-09 00:35:18.011402"], ["user_id", 5], ["vehicle_id", 74]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Norbert"], ["last_name", "Wunsch"], ["phone", "(467) 669-1133"], ["email", "johnnie@toy-gerhold.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.022517"], ["updated_at", "2020-07-09 00:35:18.022517"], ["user_id", 9], ["vehicle_id", 30]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.4ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Myrtie"], ["last_name", "Bednar"], ["phone", "318-340-8611"], ["email", "rhea@kassulke.io"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.033302"], ["updated_at", "2020-07-09 00:35:18.033302"], ["user_id", 7], ["vehicle_id", 52]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.4ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Manie"], ["last_name", "Wehner"], ["phone", "260.471.1452"], ["email", "irina@nicolas.co"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.045744"], ["updated_at", "2020-07-09 00:35:18.045744"], ["user_id", 7], ["vehicle_id", 92]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.4ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Chloe"], ["last_name", "Dickens"], ["phone", "1-215-066-2728"], ["email", "derek_tromp@borer.com"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.055468"], ["updated_at", "2020-07-09 00:35:18.055468"], ["user_id", 2], ["vehicle_id", 68]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Jasmine"], ["last_name", "Beahan"], ["phone", "1-731-025-1600"], ["email", "ike@prosacco.com"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.069950"], ["updated_at", "2020-07-09 00:35:18.069950"], ["user_id", 3], ["vehicle_id", 69]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.9ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 82], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Evelia"], ["last_name", "Swift"], ["phone", "105.392.4052"], ["email", "dee_littel@jerde-zieme.name"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.082778"], ["updated_at", "2020-07-09 00:35:18.082778"], ["user_id", 7], ["vehicle_id", 82]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 65], ["LIMIT", 1]]
+  [1m[36mProspect Create (0.5ms)[0m  [1m[32mINSERT INTO "prospects" ("first_name", "last_name", "phone", "email", "status", "created_at", "updated_at", "user_id", "vehicle_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Bradley"], ["last_name", "Terry"], ["phone", "313-666-3869"], ["email", "christian@grimes-hane.com"], ["status", "new"], ["created_at", "2020-07-09 00:35:18.094923"], ["updated_at", "2020-07-09 00:35:18.094923"], ["user_id", 5], ["vehicle_id", 65]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProspect Load (1.8ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (3.8ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVehicle Load (2.2ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1 LIMIT $2[0m  [["vehicle_id", 2], ["LIMIT", 11]]
+  [1m[36mVehicle Load (0.6ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1 LIMIT $2[0m  [["vehicle_id", 19], ["LIMIT", 11]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2020-07-08 18:00:05 -0700
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 77.7ms | Allocations: 372)
+Completed 200 OK in 274ms (Views: 182.3ms | ActiveRecord: 0.0ms | Allocations: 1980)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-07-08 18:00:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/prospects/1" for ::1 at 2020-07-08 18:00:19 -0700
+Processing by ProspectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProspect Load (1.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/prospects_controller.rb:44:in `set_prospect'
+  [1m[36mVehicle Load (2.2ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  ↳ app/controllers/prospects_controller.rb:13:in `show'
+Completed 200 OK in 143ms (Views: 0.5ms | ActiveRecord: 16.3ms | Allocations: 16355)
+
+
+Started GET "/vehicles" for ::1 at 2020-07-08 18:03:00 -0700
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (0.7ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles"[0m
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 1]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 2]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 3]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.9ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 4]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.9ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 5]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 6]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 7]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 8]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 9]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 10]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 11]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 12]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 13]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 14]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 15]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 16]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 17]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 18]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 19]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 20]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 21]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 22]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 23]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 24]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 25]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 26]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 27]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.8ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 28]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 29]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 30]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 31]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 32]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 33]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 34]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 35]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 36]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 37]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (2.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 38]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 39]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 40]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.8ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 41]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 42]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 43]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 44]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 45]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 46]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 47]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 48]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 49]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 50]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 51]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 52]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 53]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 54]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 55]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 56]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 57]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 58]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 59]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 60]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 61]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 62]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 63]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 64]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 65]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 66]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 67]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 68]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 69]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 70]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 71]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 72]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 73]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 74]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 75]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 76]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 77]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 78]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 79]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 80]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 81]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 82]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 83]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.0ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 84]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 85]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 86]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 87]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 88]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 89]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 90]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 91]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 92]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 93]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 94]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 95]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 96]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 97]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 98]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 99]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 100]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+Completed 200 OK in 1644ms (Views: 0.2ms | ActiveRecord: 61.1ms | Allocations: 114027)
+
+
+Started GET "/vehicles" for ::1 at 2020-07-08 18:03:22 -0700
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (0.9ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles"[0m
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 5.8ms | Allocations: 10539)
+
+
+  
+NoMethodError (undefined method `prospect' for #<Vehicle:0x000000000a89d050>
+Did you mean?  prospects
+               prospects=):
+  
+app/controllers/vehicles_controller.rb:8:in `index'
+Started GET "/vehicles" for ::1 at 2020-07-08 18:03:33 -0700
+Processing by VehiclesController#index as HTML
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles"[0m
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 1]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 2]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 3]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 4]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 5]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 6]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 7]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 8]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 9]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 10]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 11]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 12]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 13]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 14]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 15]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 16]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 17]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 18]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 19]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 20]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 21]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 22]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 23]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 24]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 25]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 26]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (2.9ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 27]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 28]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 29]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 30]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 31]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 32]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 33]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 34]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 35]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.8ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 36]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 37]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 38]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 39]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 40]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 41]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 42]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 43]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 44]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 45]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 46]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 47]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 48]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 49]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 50]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 51]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 52]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 53]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 54]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 55]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 56]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 57]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 58]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 59]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 60]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 61]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 62]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.8ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 63]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 64]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 65]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 66]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 67]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 68]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 69]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 70]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 71]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 72]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 73]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 74]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 75]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 76]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.0ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 77]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 78]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 79]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 80]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 81]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 82]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 83]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 84]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 85]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 86]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.7ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 87]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 88]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 89]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 90]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 91]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (1.1ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 92]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 93]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 94]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 95]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 96]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 97]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.5ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 98]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 99]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1[0m  [["vehicle_id", 100]]
+  ↳ app/controllers/vehicles_controller.rb:8:in `index'
+Completed 200 OK in 1401ms (Views: 0.2ms | ActiveRecord: 59.3ms | Allocations: 112593)
+
+
+  [1m[36mVehicle Load (1.6ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProspect Load (2.9ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1 LIMIT $2[0m  [["vehicle_id", 1], ["LIMIT", 11]]
+  [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVehicle Load (0.6ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1 LIMIT $2[0m  [["vehicle_id", 85], ["LIMIT", 11]]
