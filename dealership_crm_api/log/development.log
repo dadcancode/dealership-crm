@@ -1004,3 +1004,49 @@ Completed 200 OK in 1401ms (Views: 0.2ms | ActiveRecord: 59.3ms | Allocations: 1
   [1m[36mProspect Load (0.4ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mVehicle Load (0.6ms)[0m  [1m[34mSELECT "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
   [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."vehicle_id" = $1 LIMIT $2[0m  [["vehicle_id", 85], ["LIMIT", 11]]
+Started GET "/user/2" for ::1 at 2020-07-08 18:08:12 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/user/2"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/2" for ::1 at 2020-07-08 18:08:26 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[36mProspect Load (0.3ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:13:in `show'
+Completed 200 OK in 56ms (Views: 0.1ms | ActiveRecord: 11.5ms | Allocations: 13600)
+
+
+Started GET "/users/5" for ::1 at 2020-07-08 18:08:45 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[36mProspect Load (0.6ms)[0m  [1m[34mSELECT "prospects".* FROM "prospects" WHERE "prospects"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:13:in `show'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 1974)
+
+
