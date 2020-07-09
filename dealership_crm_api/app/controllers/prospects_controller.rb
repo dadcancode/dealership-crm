@@ -5,12 +5,12 @@ class ProspectsController < ApplicationController
   def index
     @prospects = Prospect.all
 
-    render json: @prospects
+    render json: @prospects.to_json(include: :vehicle)
   end
 
   # GET /prospects/1
   def show
-    render json: @prospect
+    render json: @prospect.to_json(include: :vehicle)
   end
 
   # POST /prospects
