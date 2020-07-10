@@ -3,22 +3,24 @@ class ProspectsController < ApplicationController
 
   # GET /prospects
   def index
-    @prospects = Prospect.all
+    @prospects = User.find(params[:user_id]).prospects.order("created_at DESC")
 
-    render json: @prospects.to_json(include: :vehicle)
+    render json: @prospects.to_json
   end
 
   # GET /prospects/1
   def show
-    render json: @prospect.to_json(include: :vehicle)
+    render json: @prospect.to_json
   end
 
   # POST /prospects
   def create
+    p "i ran"
     @prospect = Prospect.new(prospect_params)
+    @prospect.user_id = params[:user_id]
 
     if @prospect.save
-      render json: @prospect, status: :created, location: @prospect
+      render json: @prospect, status: :created
     else
       render json: @prospect.errors, status: :unprocessable_entity
     end
@@ -46,6 +48,6 @@ class ProspectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def prospect_params
-      params.require(:prospect).permit(:first_name, :last_name, :phone, :email, :status)
+      params.require(:prospect).permit(:first_name, :last_name, :phone, :email, :status, :vehicle_id)
     end
 end

@@ -1,0 +1,9 @@
+.todays-tasks {
+
+}
+
+.today-cont {
+    display: flex;
+    flex-direction: column;
+    
+}

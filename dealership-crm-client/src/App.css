@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+}
+
+.view-window {
+  flex: 1;
+}
