@@ -80,8 +80,10 @@ class AddProspect extends Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             }
-        }).then(resp => resp.json())
-        .then(json => console.log(json))
+        }).then(() => {
+            this.props.updateProspects(this.props.user)
+            this.props.changeView('prospects')
+        })
     }
 
     render () {

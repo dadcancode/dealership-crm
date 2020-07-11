@@ -36,3 +36,5 @@
 #         vehicle_id: Faker::Number.within(range: 1..100)
 #     })
 # end
+
+# Sprocess.create({name: 'new'});

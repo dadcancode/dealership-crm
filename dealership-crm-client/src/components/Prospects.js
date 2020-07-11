@@ -7,7 +7,7 @@ class Prospects extends Component {
             <div>
                 {this.props.prospects.map((prospect, index) => {
                     return (
-                        <ProspectItem prospect={prospect} vehicle={prospect.vehicle} />
+                        <ProspectItem prospect={prospect} vehicle={prospect.vehicle} getProspect={this.props.getProspect}/>
                     )
                 })}
             </div>

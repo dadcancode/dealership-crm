@@ -16,7 +16,7 @@ class VehSel extends Component {
                         })}
                     </select>
                 </div>
-                {this.props.sel_year != 'none' && 
+                {this.props.sel_year !== 'none' && 
                     <div>
                         <label htmlFor="make_sel">Make:</label>
                         <select id="make_sel" name="make_sel" onChange={this.props.handleMakeSel}>
@@ -29,7 +29,7 @@ class VehSel extends Component {
                         </select>
                     </div>
                 }
-                {this.props.sel_make != 'none' &&
+                {this.props.sel_make !== 'none' &&
                     <div>
                         <label htmlFor="model_sel">Model:</label>
                         <select id="model_sel" name="model_sel" onChange={this.props.handleModelSel}>

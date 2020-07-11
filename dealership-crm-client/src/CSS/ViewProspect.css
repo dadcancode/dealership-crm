@@ -1,0 +1,37 @@
+.prospect-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: burlywood;
+}
+
+.opp-info {
+    display: flex;
+    background-color: darkkhaki;
+    height: 40%;
+}
+
+.prospect-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.prospect-info > div, .veh-info > div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+}
+
+.veh-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info {
+    flex: 1;
+    background-color: darkolivegreen;
+}

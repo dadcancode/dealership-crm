@@ -8,7 +8,9 @@ class SideNav extends Component {
                 <div>
                     Organizer
                 </div>
-                <div>
+                <div onClick={() => {
+                    this.props.changeView('prospects')
+                }}>
                     Prospects
                 </div>
                 <div>

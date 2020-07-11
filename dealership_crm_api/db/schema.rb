@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_231533) do
+ActiveRecord::Schema.define(version: 2020_07_10_232031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 2020_07_08_231533) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "vehicle_id"
+    t.integer "sprocess_id"
+    t.text "task_notes", default: [], array: true
+    t.boolean "task_completed", default: [], array: true
+    t.string "task_type", default: [], array: true
+    t.integer "task_due_dates", default: [], array: true
   end
 
   create_table "sprocesses", force: :cascade do |t|
@@ -34,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_231533) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "type"
+    t.string "lead_type"
     t.integer "due_date"
     t.boolean "completed"
     t.string "notes"

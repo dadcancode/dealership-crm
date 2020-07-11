@@ -4,7 +4,7 @@ class ProspectItem extends Component {
     render () {
         return (
             <div className="prospect-item">
-                <span>
+                <span id={this.props.prospect.id} onClick={this.props.getProspect}>
                     {this.props.prospect.first_name} {this.props.prospect.last_name}
                 </span>
                 <span>

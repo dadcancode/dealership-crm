@@ -10,7 +10,7 @@ class SprocessesController < ApplicationController
 
   # GET /sprocesses/1
   def show
-    render json: @sprocess
+    render json: @sprocess.to_json(include: :tasks)
   end
 
   # POST /sprocesses
